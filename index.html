@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jenkins Web Dashboard</title>
+  <style>
+    /* Reset & basic styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f2c94c, #333, #444);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(0,0,0,0.7);
+      padding: 50px 80px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #f2c94c;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #f2c94c, #f2994a);
+      background-size: 200% 200%;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: bounce 2s infinite;
+    }
+
+    .btn:hover {
+      background-position: right center;
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Jenkins logo */
+    .logo {
+      width: 100px;
+      margin-bottom: 20px;
+      animation: rotateLogo 5s linear infinite;
+    }
+
+    @keyframes rotateLogo {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Build indicators */
+    .status-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .status {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f2c94c;
+      box-shadow: 0 0 10px #f2c94c;
+      animation: pulse 1.5s infinite;
+    }
+
+    .status.success { background: #6fcf97; box-shadow: 0 0 10px #6fcf97; }
+    .status.failed { background: #eb5757; box-shadow: 0 0 10px #eb5757; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    /* Decorative floating circles */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle:nth-child(1) {
+      width: 150px; height: 150px;
+      background: #f2c94c;
+      top: 10%; left: 10%;
+    }
+
+    .circle:nth-child(2) {
+      width: 120px; height: 120px;
+      background: #6fcf97;
+      bottom: 15%; right: 15%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+  <div class="container">
+    <img src="https://www.jenkins.io/images/logos/jenkins/jenkins.png" alt="Jenkins Logo" class="logo">
+    <h1>Jenkins Dashboard</h1>
+    <p>Monitor your builds and pipelines easily. Status indicators below show the latest build results in real-time.</p>
+    
+    <div class="status-container">
+      <div class="status success"></div>
+      <div class="status failed"></div>
+      <div class="status success"></div>
+    </div>
+
+    <a href="#" class="btn">View Builds</a>
+  </div>
+</body>
+</html>
